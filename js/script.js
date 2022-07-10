@@ -31,6 +31,16 @@ function shoreBigSlider() {
    });
 
    function rollSlider() {
+      const marker = Array.from(document.querySelectorAll('.location-items__item'));
+      for (let index in marker) {
+         console.log(marker[index]);
+         console.log(index);
+         if (count == index) {
+            marker[index].classList.add('location-items__item-active');
+         } else {
+            marker[index].classList.remove('location-items__item-active');
+         }
+      }
       sliderLine.style.transform = 'translate(-' + count * width + 'px)';
    }
 }

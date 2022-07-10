@@ -22,7 +22,7 @@ body {
 }
 
 .container {
-   max-width: 1440px;
+   max-width: 1450px;
    margin: 0px auto;
 }
 
@@ -52,6 +52,12 @@ body {
    @media (max-width: 769px) {
       font-size: 50px;
    }
+   @media (max-width: 661px) {
+      font-size: 40px;
+   }
+   @media (max-width: 426px) {
+      font-size: 25px;
+   }
 }
 
 .small-title {
@@ -65,6 +71,12 @@ body {
    }
    @media (max-width: 769px) {
       font-size: 25px;
+   }
+   @media (max-width: 661px) {
+      font-size: 20px;
+   }
+   @media (max-width: 426px) {
+      font-size: 15px;
    }
 }
 
@@ -94,6 +106,19 @@ body {
    @media (max-width: 769px) {
       font-size: 18px;
    }
+   @media (max-width: 426px) {
+      font-size: 15px;
+      &::before {
+         content: "";
+         background: #FFFFFF;
+         opacity: 0.5;
+         width: 40px;
+         height: 1px;
+         position: absolute;
+         top: 50%;
+         left: -50px;
+      }
+   }
 }
 /*================Shore===============================*/
 
@@ -115,21 +140,27 @@ body {
       z-index: 1;
       display: flex;
       align-items: start;
-      padding: 0px 0px 40px 0px;
+      padding: 0px 5px 40px 5px;
       background: radial-gradient(ellipse at center, rgba(125, 126, 125, 0.3) 0%, rgba(110, 111, 110, 0.3) 8%, rgba(24, 24, 24, 0.9) 54%, rgba(0, 0, 0, 0.9) 67%, rgba(0, 0, 0, 0.9) 100%);
+      @media (max-width: 768px) {
+         padding: 0px 0px 30px 0px;
+      }
+      @media (max-width: 661px) {
+         padding: 0px 0px 20px 0px;
+      }
    }
 
    &__side {
       align-self: stretch;
       display: flex;
-      width: 13.9%;
+      width: 11.74%;
       justify-content: start;
       align-items: end;
    }
 
    &__main {
       align-self: stretch;
-      width: 86.1%;
+      width: 88.26%;
       display: flex;
       justify-content: space-between;
    }
@@ -162,6 +193,9 @@ body {
       @media (max-width: 769px) {
          padding-right: 35px;
       }
+      @media (max-width: 661px) {
+         padding-right: 10px;
+      }
    }
 
    &__places-box {
@@ -180,9 +214,8 @@ body {
 
    &__slider-location {
       display: flex;
-      justify-content: end;
+      justify-content: space-between;
       width: 100%;
-      padding: 0px 0px 0px 20px;
    }
 
    &__bak-lay {
@@ -208,14 +241,6 @@ body {
       height: 100%;
    }
 
-   &__arrow-down {
-      width: 100%;
-      padding: 0px 10px 0px 0px;
-      align-self: end;
-   }
-
-   &__arrow-img {}
-
    &__logo {
       margin: 0px 0px 86px 0px;
       @media (max-width: 1025px) {
@@ -223,6 +248,9 @@ body {
       }
       @media (max-width: 769px) {
          margin: 0px 0px 30px 0px;
+      }
+      @media (max-width: 661px) {
+         margin: 0px 0px 15px 0px;
       }
    }
 
@@ -239,6 +267,12 @@ body {
       }
       @media (max-width: 769px) {
          font-size: 40px;
+      }
+      @media (max-width: 661px) {
+         font-size: 30px;
+      }
+      @media (max-width: 426px) {
+         font-size: 20px;
       }
    }
 
@@ -258,6 +292,12 @@ body {
       }
       @media (max-width: 769px) {
          height: 150px;
+      }
+      @media (max-width: 661px) {
+         height: 100px;
+      }
+      @media (max-width: 426px) {
+         height: 70px;
       }
    }
 
@@ -316,14 +356,18 @@ body {
       @media (max-width: 769px) {
          display: block;
          position: absolute;
-         left: 120px;
+         right: -90px;
          top: 50%;
          transform: translate(0px, -50%);
-         padding: 10px 10px;
+         padding: 10px;
          border: 2px solid white;
          border-radius: 5px;
          background-color: rgba(0, 0, 0, 0.562);
       }
+      @media (max-width: 426px) {
+         padding: 5px;
+      }
+      
    }
 
    &__burger-menu {
@@ -370,6 +414,12 @@ body {
          top: 50%;
          transform: translate(0px, -50%);
       }
+      @media (max-width: 661px) {
+         font-size: 35px;
+      }
+      @media (max-width: 426px) {
+         font-size: 30px;
+      }
    }
 
    &__hide-menu-active {
@@ -396,11 +446,18 @@ body {
          @media (max-width: 1025px) {
             margin: 0px 0px 20px 0px;
          }
+         @media (max-width: 426px) {
+            margin: 0px 0px 10px 0px;
+         }
       }
+      
    }
 
    &__search {
       margin: 0px 0px 37px 0px;
+      @media (max-width: 661px) {
+         margin: 0px 0px 20px 0px;
+      }
    }
 
    &__search-box {
@@ -435,12 +492,19 @@ body {
       @media (max-width: 769px) {
          margin: 0px 0px 15px 0px;
       }
+      @media (max-width: 661px) {
+         margin: 0px 0px 5px 0px;
+      }
    }
 
    &__location {
       display: flex;
       justify-content: center;
       align-items: center;
+      padding: 0px 5px;
+      @media (max-width: 769px) {
+         flex-direction: column;
+      }
    }
 }
 
@@ -452,6 +516,9 @@ body {
       img {
          width: 100%;
       }
+      @media (max-width: 426px) {
+         margin: 0px 0px 4px 0px;
+      }
    }
 
    &__name {
@@ -461,6 +528,9 @@ body {
       text-align: center;
       letter-spacing: 3px;
       color: #FFFFFF;
+      @media (max-width: 426px) {
+         font-size: 10px;
+      }
    }
 }
 
@@ -478,6 +548,12 @@ body {
       @media (max-width: 769px) {
          font-size: 50px;
       }
+      @media (max-width: 661px) {
+         font-size: 40px;
+      }
+      @media (max-width: 426px) {
+         font-size: 30px;
+      }
    }
 
    &__month-year {
@@ -493,6 +569,9 @@ body {
       @media (max-width: 769px) {
          font-size: 13px;
       }
+      @media (max-width: 661px) {
+         font-size: 10px;
+      }
    }
 }
 
@@ -500,9 +579,9 @@ body {
 
    &__icon {
       margin: 0px 9px 0px 0px;
-   }
-   @media (max-width: 769px) {
-      margin: 0px 5px 0px 0px;
+      @media (max-width: 769px) {
+         margin: 0px 0px 5px 0px;
+      }
    }
 
    &__place {
@@ -512,6 +591,9 @@ body {
       text-align: center;
       letter-spacing: 1.05px;
       color: #FFFFFF;
+      @media (max-width: 661px) {
+         font-size: 10px;
+      }
    }
 }
 
@@ -537,6 +619,30 @@ body {
 
 .location-items {
 
+   &__arrow-down {
+      align-self: end;
+      margin: 0px 20px 0px 5px;
+   }
+   
+   &__arrow-img {}
+
+   &__columns {
+      flex: 1 1 auto;
+      display: flex;
+      justify-content: end;
+      align-items: center;
+      @media (max-width: 661px) {
+         flex-wrap: wrap;
+         justify-content: space-around;
+      }
+      @media (max-width: 540px) {
+         flex-wrap: wrap;
+         justify-content: end;
+      }
+   }
+
+   
+
    &__item {
       max-width: 200px;
       border-top: 4px solid #FFFFFF;
@@ -545,13 +651,31 @@ body {
       width: 100%;
       &:not(:last-child) {
          margin: 0px 40px 0px 0px;
-         @media (max-width: 1025px) {
+      }
+      @media (max-width: 1025px) {
+         &:not(:last-child) {
             margin: 0px 30px 0px 0px;
          }
-         @media (max-width: 769px) {
+      }
+      @media (max-width: 769px) {
+         &:not(:last-child) {
             margin: 0px 20px 0px 0px;
          }
       }
+      @media (max-width: 661px) {
+         &:not(:last-child) {
+            margin: 0px 5px 10px 5px;
+         }
+         flex: 1 1 50%;
+         margin: 0px 5px 10px 5px;
+      }
+      @media (max-width: 540px) {
+         max-width: 150px;
+      }
+   }
+
+   &__item-active {
+      border-top: 4px solid #4AF6CD;
    }
 
    &__number {
@@ -566,6 +690,9 @@ body {
       @media (max-width: 769px) {
          font-size: 18px;
       }
+      @media (max-width: 426px) {
+         font-size: 15px;
+      }
    }
 
    &__name {
@@ -576,6 +703,9 @@ body {
       color: #FFFFFF;
       @media (max-width: 769px) {
          font-size: 14px;
+      }
+      @media (max-width: 426px) {
+         font-size: 12px;
       }
    }
 }
@@ -596,7 +726,7 @@ body {
    }
 
    &__maps-box {
-      max-width: 80.65%;
+      max-width: 78.68%;
       overflow: hidden;
    }
 
@@ -615,6 +745,9 @@ body {
       }
       @media (max-width: 769px) {
          padding-right: 35px;
+      }
+      @media (max-width: 769px) {
+         padding-right: 10px;
       }
    }
 
