@@ -33,8 +33,6 @@ function shoreBigSlider() {
    function rollSlider() {
       const marker = Array.from(document.querySelectorAll('.location-items__item'));
       for (let index in marker) {
-         console.log(marker[index]);
-         console.log(index);
          if (count == index) {
             marker[index].classList.add('location-items__item-active');
          } else {
@@ -112,3 +110,129 @@ if (menuIcon) {
       hideMenu.classList.toggle('shore-aside__hide-menu-active');
    })
 }
+
+/*------------------------Shore. Search---------------*/
+function shoreSearch() {
+   const searcIcon = document.querySelector('.shore-aside__search-icon');
+   const searcField = document.querySelector('.shore-aside__search-field');
+
+   searcIcon.addEventListener('click', function () {
+   searcField.classList.toggle('shore-aside__search-field-active');
+});
+}
+shoreSearch();
+
+
+/*------------------------Shore. Data---------------*/
+
+function shoreData() {
+   let currentDate = new Date();
+   let day = currentDate.getDate();
+   let year = currentDate.getFullYear();
+   let month = currentDate.getMonth();
+   const currentDay = document.querySelector('.data-shore__day');
+   const currentMonthYear = document.querySelector('.data-shore__month-year');
+
+   if (day < 10) {
+      currentDay.innerHTML = '0' + day;
+   } else {
+      currentDay.innerHTML = day;
+   }
+   if (month < 10) {
+      currentMonthYear.innerHTML = '0' + month + '\n' + year;
+   } else {
+      currentMonthYear.innerHTML = month + '|' + year;
+   }
+}
+
+shoreData();
+/*------------------------Shore. Location---------------*/
+
+function shoreLocation() {
+   const locationIcon = document.querySelector('.location-shore__icon');
+   const nameLocation = document.querySelector('.location-shore__place');
+
+   window.addEventListener('resize', shoreLocation);
+
+   function showLocation() {
+      if (window.innerWidth < 541) {
+         locationIcon.addEventListener('click', function () {
+            nameLocation.classList.toggle('location-shore__place-active');
+         });
+      }
+   }
+   showLocation();
+   
+   
+   
+}
+
+shoreLocation();
+/*------------------------Shurf. Galery Slider---------------*/
+
+
+const surfLine = document.querySelector('.beach-slider__line');
+const surfSlides = Array.from(surfLine.querySelectorAll('.beach-slider__slide'));
+const btnSurfLeft = document.querySelector('.beach-slider__left-arrow');
+const btnSurfRight = document.querySelector('.beach-slider__right-arrow');
+
+let countImg = 0;
+let countCover = 1;
+
+btnSurfRight.addEventListener('click', function () {
+   surfLine.append(surfSlides[countImg]);
+   countImg++;
+   countCover++;
+   if (countImg > surfSlides.length - 1){
+      countImg = 0;
+   };
+   if (countCover > surfSlides.length - 1){
+      countCover = 0;
+   };
+   console.log(countCover);
+   for (let index in surfSlides) {
+      const surfCover = surfSlides[index].querySelector('.beach-slider__cover');
+      
+      if (index == countCover) {
+         surfSlides[index].classList.add('beach-slider__slide-active');
+         surfCover.classList.add('beach-slider__cover-active');
+      } else {
+         surfSlides[index].classList.remove('beach-slider__slide-active');
+         surfCover.classList.remove('beach-slider__cover-active');
+      }
+   }
+})
+
+
+/*------------------------test---------------*/
+
+function test() {
+
+   const sliderLine = document.querySelector('.test__slider-line');
+   const img = Array.from(sliderLine.querySelectorAll('.test__image'));
+   const btn = document.querySelector('.test__btn');
+   console.log(img);
+
+   let count = 1;
+
+   btn.addEventListener('click', function () {
+      
+      sliderLine.append(img[count]);
+      count++;
+      if (count > img.length-1){
+         count = 1;
+      };
+      for (let index in img) {
+         if (index == count) {
+            img[index].classList.add('active');
+            img[index].querySelector('.test__cover').classList.add('test__cover-active');
+         } else {
+            img[index].classList.remove('active');
+            img[index].querySelector('.test__cover').classList.remove('test__cover-active');
+         }
+      }
+   });
+
+}
+
+test();
