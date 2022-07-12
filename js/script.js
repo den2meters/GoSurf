@@ -170,69 +170,65 @@ function shoreLocation() {
 shoreLocation();
 /*------------------------Shurf. Galery Slider---------------*/
 
+function surfSlider() {
+   const surfLine = document.querySelector('.beach-slider__line');
+   const surfSlides = Array.from(surfLine.querySelectorAll('.beach-slider__slide'));
+   const btnSurfLeft = document.querySelector('.beach-slider__left-arrow');
+   const btnSurfRight = document.querySelector('.beach-slider__right-arrow');
+   const surfLables = Array.from(document.querySelectorAll('.card-slider__lable'));
 
-const surfLine = document.querySelector('.beach-slider__line');
-const surfSlides = Array.from(surfLine.querySelectorAll('.beach-slider__slide'));
-const btnSurfLeft = document.querySelector('.beach-slider__left-arrow');
-const btnSurfRight = document.querySelector('.beach-slider__right-arrow');
+   let countImgRight = 4;
+   let countImgLeft = 0;
+   let countCover = 1;
 
-let countImg = 0;
-let countCover = 1;
-
-btnSurfRight.addEventListener('click', function () {
-   surfLine.append(surfSlides[countImg]);
-   countImg++;
-   countCover++;
-   if (countImg > surfSlides.length - 1){
-      countImg = 0;
-   };
-   if (countCover > surfSlides.length - 1){
-      countCover = 0;
-   };
-   console.log(countCover);
-   for (let index in surfSlides) {
-      const surfCover = surfSlides[index].querySelector('.beach-slider__cover');
+   // btnSurfLeft.addEventListener('click', function () {
+   //    surfLine.append(surfSlides[countImgLeft]);
+   //    countImgLeft++;
+   //    countCover++;
       
-      if (index == countCover) {
-         surfSlides[index].classList.add('beach-slider__slide-active');
-         surfCover.classList.add('beach-slider__cover-active');
-      } else {
-         surfSlides[index].classList.remove('beach-slider__slide-active');
-         surfCover.classList.remove('beach-slider__cover-active');
-      }
-   }
-})
+   //    if (countImgLeft > surfSlides.length - 1) {
+   //       countImgLeft = 0;
+   //    };
+   //    if (countCover > surfSlides.length - 1) {
+   //       countCover = 0;
+   //    };
+   //    surfAddClass();
+   // });
 
+   btnSurfRight.addEventListener('click', function () {
+      surfLine.prepend(surfSlides[countImgRight]);
+      countImgRight--;
+      countCover--;
 
-/*------------------------test---------------*/
-
-function test() {
-
-   const sliderLine = document.querySelector('.test__slider-line');
-   const img = Array.from(sliderLine.querySelectorAll('.test__image'));
-   const btn = document.querySelector('.test__btn');
-   console.log(img);
-
-   let count = 1;
-
-   btn.addEventListener('click', function () {
-      
-      sliderLine.append(img[count]);
-      count++;
-      if (count > img.length-1){
-         count = 1;
+      if (countImgRight < 0) {
+         countImgRight = surfSlides.length - 1;
       };
-      for (let index in img) {
-         if (index == count) {
-            img[index].classList.add('active');
-            img[index].querySelector('.test__cover').classList.add('test__cover-active');
+      if (countCover < 0 ) {
+         countCover = surfSlides.length - 1;
+      };
+      surfAddClass();
+   });
+
+   function surfAddClass() {
+      for (let index in surfSlides) {
+         const surfCover = surfSlides[index].querySelector('.beach-slider__cover');
+         const surfBtn = surfSlides[index].querySelector('.beach-slider__btn');
+         if (index == countCover) {
+            surfSlides[index].classList.add('beach-slider__slide-active');
+            surfLables[index].querySelector('.card-slider__lable-box').classList.add('card-slider__lable-box-active');
+            surfLables[index].querySelector('.card-slider__pointer').classList.add('card-slider__pointer-active');
+            surfCover.classList.add('beach-slider__cover-active');
+            surfBtn.classList.add('beach-slider__btn-active');
          } else {
-            img[index].classList.remove('active');
-            img[index].querySelector('.test__cover').classList.remove('test__cover-active');
+            surfSlides[index].classList.remove('beach-slider__slide-active');
+            surfLables[index].querySelector('.card-slider__lable-box').classList.remove('card-slider__lable-box-active');
+            surfLables[index].querySelector('.card-slider__pointer').classList.remove('card-slider__pointer-active');
+            surfCover.classList.remove('beach-slider__cover-active');
+            surfBtn.classList.remove('beach-slider__btn-active');
          }
       }
-   });
+   };
 
 }
 
-test();
+surfSlider();
