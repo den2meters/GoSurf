@@ -232,3 +232,83 @@ function surfSlider() {
 }
 
 surfSlider();
+
+/*------------------------Travel. Slider---------------*/
+
+function travelSlider() {
+   const travelLine = document.querySelector('.travel__slider-line');
+   const travelSlides = Array.from(travelLine.querySelectorAll('.travel__main-content'));
+   const traveBtnlLeft = document.querySelector('.travel__arrow-left');
+   const traveBtnlRight = document.querySelector('.travel__arrow-right');
+
+   let count = 0;
+
+   traveBtnlRight.addEventListener('click', function () {
+      count++;
+      if (count > travelSlides.length - 1) {
+         count = 0;
+      }
+      for (let index in travelSlides) {
+      if (index == count) {
+            travelSlides[index].classList.add('travel__main-content-active');
+         } else {
+            travelSlides[index].classList.remove('travel__main-content-active');
+         }
+   }
+   })
+
+   traveBtnlLeft.addEventListener('click', function () {
+      count--;
+      if (count < 0) {
+         count = travelSlides.length - 1;
+      }
+      for (let index in travelSlides) {
+      if (index == count) {
+            travelSlides[index].classList.add('travel__main-content-active');
+         } else {
+            travelSlides[index].classList.remove('travel__main-content-active');
+         }
+   }
+   })
+
+}
+
+travelSlider();
+
+/*------------------------test---------------*/
+
+// const Line = document.querySelector('.test__slider-line');
+// const Slides = Array.from(Line.querySelectorAll('.test__slides'));
+// const btnLeft = document.querySelector('.test__btn-left');
+// const btnRight = document.querySelector('.test__btn-right');
+
+// let count = 0;
+
+// btnLeft.addEventListener('click', function () {
+//    count++;
+//    if (count > Slides.length - 1) {
+//       count = 0;
+//    }
+//    for (let index in Slides) {
+//       if (index == count) {
+//             Slides[index].classList.add('test__slides-active');
+//          } else {
+//             Slides[index].classList.remove('test__slides-active');
+//          }
+//    }
+// })
+
+// btnRight.addEventListener('click', function () {
+//    count--;
+//    if (count < 0) {
+//       count = Slides.length - 1;
+//    }
+//    for (let index in Slides) {
+//       if (index == count) {
+//             Slides[index].classList.add('test__slides-active');
+//          } else {
+//             Slides[index].classList.remove('test__slides-active');
+//          }
+//    }
+// })
+
