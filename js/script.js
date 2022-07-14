@@ -238,12 +238,12 @@ surfSlider();
 function travelSlider() {
    const travelLine = document.querySelector('.travel__slider-line');
    const travelSlides = Array.from(travelLine.querySelectorAll('.travel__main-content'));
-   const traveBtnlLeft = document.querySelector('.travel__arrow-left');
-   const traveBtnlRight = document.querySelector('.travel__arrow-right');
+   const travelBtnlLeft = document.querySelector('.travel__arrow-left');
+   const travelBtnlRight = document.querySelector('.travel__arrow-right');
 
    let count = 0;
 
-   traveBtnlRight.addEventListener('click', function () {
+   travelBtnlRight.addEventListener('click', function () {
       count++;
       if (count > travelSlides.length - 1) {
          count = 0;
@@ -257,7 +257,7 @@ function travelSlider() {
    }
    })
 
-   traveBtnlLeft.addEventListener('click', function () {
+   travelBtnlLeft.addEventListener('click', function () {
       count--;
       if (count < 0) {
          count = travelSlides.length - 1;
@@ -275,6 +275,130 @@ function travelSlider() {
 
 travelSlider();
 
+/*------------------------Travel. Slider---------------*/
+
+function sleepSlider() {
+   const sleepLine = document.querySelector('.sleep__slider-line');
+   const sleepSlides = Array.from(sleepLine.querySelectorAll('.sleep__main-content'));
+   const sleepBtnlLeft = document.querySelector('.sleep__arrow-left');
+   const sleepBtnlRight = document.querySelector('.sleep__arrow-right');
+
+   let count = 0;
+
+
+   sleepBtnlRight.addEventListener('click', function () {
+      count++;
+      if (count > sleepSlides.length - 1) {
+         count = 0;
+      }
+      for (let index in sleepSlides) {
+         if (index == count) {
+            sleepSlides[index].classList.add('sleep__main-content-active');
+            let sleepCounter = Array.from(sleepSlides[index].querySelectorAll('.information-sleep__counter'));
+            for (let key in sleepCounter) {
+               sleepCounter[key].classList.remove('information-sleep__counter-hidden');
+            }
+         } else {
+            sleepSlides[index].classList.remove('sleep__main-content-active');
+            let sleepCounter = Array.from(sleepSlides[index].querySelectorAll('.information-sleep__counter'));
+            for (let key in sleepCounter) {
+               sleepCounter[key].classList.add('information-sleep__counter-hidden');
+            }
+         }
+      }
+      counterNights();
+   })
+
+   sleepBtnlLeft.addEventListener('click', function () {
+      count--;
+      if (count < 0) {
+         count = sleepSlides.length - 1;
+      }
+      for (let index in sleepSlides) {
+         if (index == count) {
+            sleepSlides[index].classList.add('sleep__main-content-active');
+            let sleepCounter = Array.from(sleepSlides[index].querySelectorAll('.information-sleep__counter'));
+            for (let key in sleepCounter) {
+               sleepCounter[key].classList.remove('information-sleep__counter-hidden');
+            }
+         } else {
+            sleepSlides[index].classList.remove('sleep__main-content-active');
+            let sleepCounter = Array.from(sleepSlides[index].querySelectorAll('.information-sleep__counter'));
+            for (let key in sleepCounter) {
+               sleepCounter[key].classList.add('information-sleep__counter-hidden');
+            }
+         }
+   }
+   })
+   function counterNights() {
+      const activeSlide = document.querySelector('.sleep__main-content-active');
+      const btnPlusNigth = activeSlide.querySelector('.information-sleep__plus-nights');
+      const btnMinusNigth = activeSlide.querySelector('.information-sleep__minus-nights');
+      const nightAmount = activeSlide.querySelector('.information-sleep__info-nights');
+      const btnPlusGuest = activeSlide.querySelector('.information-sleep__plus-guests');
+      const btnMinusGuest = activeSlide.querySelector('.information-sleep__minus-guests');
+      const guestAmount = activeSlide.querySelector('.information-sleep__info-guests');
+
+      let countNights = 1;
+      let contentNight = 'night'
+
+      let countGuests = 1;
+      let contentGuests = 'guest'
+
+      btnPlusNigth.addEventListener('click', function () {
+         countNights++;
+         counterInfoPlus(nightAmount, countNights, contentNight)
+      })
+      btnMinusNigth.addEventListener('click', function () {
+         countNights--;
+         if (countNights < 1) {
+            countNights = 1;
+         }
+         counterInfoMinus(nightAmount, countNights, contentNight)
+      })
+
+      btnPlusGuest.addEventListener('click', function () {
+         countGuests++;
+         counterInfoPlus(guestAmount, countGuests, contentGuests)
+      })
+      btnMinusGuest.addEventListener('click', function () {
+         countGuests--;
+         if (countGuests < 1) {
+            countGuests = 1;
+         }
+         counterInfoMinus(guestAmount, countGuests, contentGuests)
+      })
+
+      function counterInfoPlus(elem, counter, content, elemPrice, price) {
+         if (counter == 1) {
+            elem.firstChild.textContent = counter + ' ' + content;
+         } else {
+            elem.firstChild.textContent = counter + ' ' + content + 's';
+         }
+      }
+      function counterInfoMinus(elem, counter, content, elemPrice, price) {
+         if (counter == 1) {
+            elem.firstChild.textContent = counter + ' ' + content;
+         } else {
+            elem.firstChild.textContent = counter + ' ' + content + 's';
+         }
+
+      }
+   }
+   counterNights();
+}  
+
+sleepSlider();
+
+// countNights++;
+         // if (countNights == 30) {
+         //    countNights = 0;
+         // }
+         // if (countNights == 1 || countNights == 0) {
+         //    nightAmount.firstChild.textContent = countNights + ' night';
+         // } else {
+         //    nightAmount.firstChild.textContent = countNights + ' nights';
+         // } 
 /*------------------------test---------------*/
 
 // const Line = document.querySelector('.test__slider-line');
