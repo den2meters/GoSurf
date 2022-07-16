@@ -168,6 +168,41 @@ function shoreLocation() {
 }
 
 shoreLocation();
+
+/*------------------------Shore. go to section---------------*/
+
+function choseSection() {
+   const sectionArray = document.querySelectorAll('.shore-aside__menu-items[data-goto');
+   const arrowDown = document.querySelectorAll('.location-items__arrow-img[data-goto]');
+
+
+   if (sectionArray.length > 0) {
+      sectionArray.forEach(sectionArray => {
+         sectionArray.addEventListener('click', goToSection);
+      });
+
+      arrowDown.forEach(arrowDown => {
+         arrowDown.addEventListener('click', goToSection);
+      })
+
+      function goToSection(e) {
+         const section = e.target;
+         if (section.dataset.goto && document.querySelector(section.dataset.goto)) {
+            const goSection = document.querySelector(section.dataset.goto);
+            const goSectionValue = goSection.getBoundingClientRect().top + scrollY;
+            window.scrollTo({
+               top: goSectionValue,
+               behavior: "smooth",
+            });
+            e.preventDefault();
+         }
+      }
+   }
+}
+
+choseSection();
+
+
 /*------------------------Shurf. Galery Slider---------------*/
 
 function surfSlider() {
@@ -275,7 +310,7 @@ function travelSlider() {
 
 travelSlider();
 
-/*------------------------Travel. Slider---------------*/
+/*------------------------Sleep. Slider---------------*/
 
 function sleepSlider() {
    const sleepLine = document.querySelector('.sleep__slider-line');
@@ -330,6 +365,7 @@ function sleepSlider() {
          }
    }
    })
+
    function counterNights() {
       const activeSlide = document.querySelector('.sleep__main-content-active');
       const btnPlusNigth = activeSlide.querySelector('.information-sleep__plus-nights');
@@ -390,49 +426,75 @@ function sleepSlider() {
 
 sleepSlider();
 
-// countNights++;
-         // if (countNights == 30) {
-         //    countNights = 0;
-         // }
-         // if (countNights == 1 || countNights == 0) {
-         //    nightAmount.firstChild.textContent = countNights + ' night';
-         // } else {
-         //    nightAmount.firstChild.textContent = countNights + ' nights';
-         // } 
-/*------------------------test---------------*/
+/*------------------------Shop. Slider---------------*/
 
-// const Line = document.querySelector('.test__slider-line');
-// const Slides = Array.from(Line.querySelectorAll('.test__slides'));
-// const btnLeft = document.querySelector('.test__btn-left');
-// const btnRight = document.querySelector('.test__btn-right');
+function shopSlider() {
+   const shopLine = document.querySelector('.shop__slider-line');
+   const shopSlides = Array.from(shopLine.querySelectorAll('.shop__main-content'));
+   const shopBtnlLeft = document.querySelector('.shop__arrow-left');
+   const shopBtnlRight = document.querySelector('.shop__arrow-right');
 
-// let count = 0;
+   let count = 0;
 
-// btnLeft.addEventListener('click', function () {
-//    count++;
-//    if (count > Slides.length - 1) {
-//       count = 0;
-//    }
-//    for (let index in Slides) {
-//       if (index == count) {
-//             Slides[index].classList.add('test__slides-active');
-//          } else {
-//             Slides[index].classList.remove('test__slides-active');
-//          }
-//    }
-// })
 
-// btnRight.addEventListener('click', function () {
-//    count--;
-//    if (count < 0) {
-//       count = Slides.length - 1;
-//    }
-//    for (let index in Slides) {
-//       if (index == count) {
-//             Slides[index].classList.add('test__slides-active');
-//          } else {
-//             Slides[index].classList.remove('test__slides-active');
-//          }
-//    }
-// })
+   shopBtnlRight.addEventListener('click', function () {
+      count++;
+      if (count > shopSlides.length - 1) {
+         count = 0;
+      }
+      for (let index in shopSlides) {
+         if (index == count) {
+            shopSlides[index].classList.add('shop__main-content-active');
+         } else {
+            shopSlides[index].classList.remove('shop__main-content-active');
+         }
+      }
+      shopTips();
+   })
 
+   shopBtnlLeft.addEventListener('click', function () {
+      count--;
+      if (count < 0) {
+         count = shopSlides.length - 1;
+      }
+      for (let index in shopSlides) {
+         if (index == count) {
+            shopSlides[index].classList.add('shop__main-content-active');
+         } else {
+            shopSlides[index].classList.remove('shop__main-content-active');
+         }
+      }
+      shopTips();
+   })
+
+   function shopTips() {
+      const shopActive = document.querySelector('.shop__main-content-active');
+      const shape = shopActive.querySelector('#shape');
+      const btnShape = shape.querySelector('.board-surf__pointer');
+      const descrptShape = shape.querySelector('.board-surf__decription');
+
+      btnShape.addEventListener('click', function () {
+         descrptShape.classList.toggle('shape-descrpt');
+      })
+
+      const rail = shopActive.querySelector('#rail');
+      const btnRail = rail.querySelector('.board-surf__pointer');
+      const descrptRail = rail.querySelector('.board-surf__decription');
+      
+      btnRail.addEventListener('click', function () {
+         descrptRail.classList.toggle('rail-descrpt');
+      })
+
+      const fins = shopActive.querySelector('#fins');
+      const btnFins = fins.querySelector('.board-surf__pointer');
+      const descrptFins = fins.querySelector('.board-surf__decription');
+      
+      btnFins.addEventListener('click', function () {
+         descrptFins.classList.toggle('fins-descrpt');
+      })
+
+   }
+   shopTips();
+}  
+
+shopSlider();

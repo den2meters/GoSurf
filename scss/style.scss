@@ -531,6 +531,7 @@ body {
          border: 2px solid white;
          border-radius: 5px;
          background-color: rgba(0, 0, 0, 0.562);
+         z-index: 30;
       }
       @media (max-width: 426px) {
          padding: 5px;
@@ -2544,6 +2545,18 @@ body {
       flex-direction: column;
       align-items: center;
       justify-content: center;
+      margin: 0px 0px 120px 0px;
+      @media (max-width: 1025px) {
+         margin: 0px 0px 120px 0px;
+      }
+   
+      @media (max-width: 769px) {
+         margin: 0px 0px 70px 0px;
+      }
+   
+      @media (max-width: 426px) {
+         margin: 0px 0px 40px 0px;
+      }
    }
 
    &__head {
@@ -2672,11 +2685,13 @@ body {
       top: 0;
       left: 0;
       z-index: 1;
+      width: 100%;
    }
 
    &__image {
       img {
             width: 100%;
+            max-height: 695px;
          }
       position: relative;
       z-index: 2;
@@ -2789,7 +2804,9 @@ body {
       }
    }
 
-   &__button {}
+   &__button {
+      cursor: pointer;
+   }
 }
 
 .board-surf {
@@ -2847,7 +2864,9 @@ body {
    &__pointer {
       width: 20px;
       height: 20px;
-      background-color: #fff;
+      background-color: rgb(83, 83, 83);
+      box-shadow: 0px 0px 10px #4AF6CD;
+      border: 2px solid black ;
       border-radius: 50%;
       cursor: pointer;
       display: flex;
@@ -2864,18 +2883,13 @@ body {
          width: 3px;
          height: 10px;
          background-color: #4AF6CD;
-         transform: translate(-50%, -50%);
+         transform: translate(-55%, -45%);
       }
    }
 
-   #concave {
+   #shape {
       top: 30%;
       left: 70%;
-   }
-
-   #fins {
-      top: 90%;
-      left: 20%;
    }
 
    #rail {
@@ -2883,8 +2897,12 @@ body {
       left: 75%;
    }
 
+   #fins {
+      top: 90%;
+      left: 50%;
+   }
+
    &__decription {
-      //display: none;
       max-width: 455px;
       font-weight: 800;
       font-size: 24px;
@@ -2930,10 +2948,23 @@ body {
       }
    }
 
+   .shape-descrpt {
+      opacity: 0;
+   }
+
+   .rail-descrpt{
+      opacity: 0;
+   }
+
+   .fins-descrpt {
+      opacity: 0;
+   }
+
    &__extra {
       align-self: end;
       display: flex;
       flex-direction: column;
+      margin: 0px 0px 100px 0px;
    }
 }
 
@@ -3045,62 +3076,34 @@ body {
    }
 }
 
+/*================Shop===============================*/
 
-
-
-
-/*----------------------test---------------*/
-
-.page {
-
-   &__test {}
-}
-
-.test {
+.footer {
 
    &__container {}
 
    &__body {
-      background-color: rgb(255, 125, 125);
-      padding: 10px;
-
-   }
-   
-   &__btn {
-      width: 100px;
-      height: 80px;
-      background-color: #fff;
       display: flex;
+      flex-direction: column;
       justify-content: center;
       align-items: center;
-      font-size: 30px;
    }
 
-   &__slider-line {
-      display: flex;
-      align-content: stretch;
-      justify-content: stretch;
-      position: relative;
+   &__button {
+      cursor: pointer;
+      margin: 0px 0px 30px 0px;
    }
 
-   &__slides {
-      position: absolute;
-      top: 0;
-      left: 0;
-      opacity: 0;
-      transition: 1s;
-      img {
-         width: 100%;
-         height: 100%;
-      }
-   }
-
-   &__slides-active {
-      opacity: 1;
-   }
-
-   &__slides-relative {
-      position: relative;
-      opacity: 1;
+   &__rights {
+      font-weight: 300;
+      font-size: 12px;
+      line-height: 166.66%;
+      text-align: center;
+      letter-spacing: 1.05px;
+      text-transform: uppercase;
+      color: #FFFFFF;
+      mix-blend-mode: normal;
+      opacity: 0.5;
+      margin: 0px 0px 30px 0px;
    }
 }
