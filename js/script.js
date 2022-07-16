@@ -129,7 +129,7 @@ function shoreData() {
    let currentDate = new Date();
    let day = currentDate.getDate();
    let year = currentDate.getFullYear();
-   let month = currentDate.getMonth();
+   let month = currentDate.getMonth() + 1;
    const currentDay = document.querySelector('.data-shore__day');
    const currentMonthYear = document.querySelector('.data-shore__month-year');
 
