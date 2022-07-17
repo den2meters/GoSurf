@@ -48,7 +48,7 @@ shoreBigSlider();
 
 function shoreSmallSlider() {
    const smallSlider = Array.from(slides);
-
+   
    for (let slide in smallSlider) {
 
       const slidesLineSmall = smallSlider[slide].querySelector('.info-slides__maps-slide');
@@ -56,9 +56,10 @@ function shoreSmallSlider() {
 
       let countSmall = 0;
       let widthSmall;
-
       function initSmall() {
-         widthSmall = smallSlider[slide].querySelector('.info-slides__maps-box').offsetWidth;
+         let percentWidth = getComputedStyle(smallSlider[slide].querySelector('.info-slides__maps-box'));
+         let maxWidth = parseFloat(percentWidth.maxWidth) / 100;
+         widthSmall = smallSlider[slide].offsetWidth * maxWidth;
          slidesLineSmall.style.widthSmall = widthSmall * slidesImages.length + 'px';
          slidesImages.forEach(item => {
             item.style.widthSmall = widthSmall + 'px';
@@ -76,6 +77,7 @@ function shoreSmallSlider() {
             countSmall =  0;
          }
          rollSliderSmall();
+         console.log(widthSmall);
       });
 
       smallSlider[slide].querySelector('.info-slides__arrow-right').addEventListener('click', function () {
@@ -89,7 +91,6 @@ function shoreSmallSlider() {
       function rollSliderSmall() {
          slidesLineSmall.style.transform = 'translate(-' + countSmall * widthSmall + 'px)';
       }
-
    }
 
    

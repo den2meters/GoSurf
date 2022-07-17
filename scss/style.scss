@@ -284,7 +284,6 @@ body {
 .page {
 
    &__shore {
-      background-color: rgb(0, 0, 0);
    }
 }
 
@@ -300,7 +299,7 @@ body {
       display: flex;
       align-items: start;
       padding: 0px 0px 40px 0px;
-      background: radial-gradient(ellipse at center, rgba(125, 126, 125, 0.3) 0%, rgba(110, 111, 110, 0.3) 8%, rgba(24, 24, 24, 0.9) 54%, rgba(0, 0, 0, 0.9) 67%, rgba(0, 0, 0, 0.9) 100%);
+      background: radial-gradient(circle at 50% 50%, rgba(23, 25, 25, 1) 0%, rgba(23, 25, 25, 0) 0%, rgba(23, 25, 25, 1) 69%);
       @media (max-width: 768px) {
          padding: 0px 0px 30px 0px;
       }
@@ -341,7 +340,6 @@ body {
 
    &__slides-info {
       display: flex;
-      transition: all ease 0.1s;
    }
 
    &__places {
@@ -567,7 +565,6 @@ body {
          height: 3px;
          background-color: #fff;
          border-radius: 3px;
-         transition: all 0.3s ease-in-out;
       }
       &::after,
       &::before {
@@ -949,7 +946,7 @@ body {
    }
 
    &__maps-box {
-      max-width: 78.68%;
+      max-width: 61.369%;
       overflow: hidden;
    }
 
@@ -993,6 +990,7 @@ body {
       top: 5%;
       right: 7%;
       display: flex;
+      z-index: 20;
    }
 
    &__arrow-left {
@@ -1546,7 +1544,7 @@ body {
 
    &__arrows {
       position: absolute;
-      top: -30px;
+      top: -50px;
       right: 0;
       display: flex;
       justify-content: center;
@@ -1555,7 +1553,7 @@ body {
    }
 
    &__right-arrow {
-      transform: rotate(180deg);
+      padding: 10px;
       margin: 0px 20px 0px 0px;
    }
 }
@@ -1708,7 +1706,6 @@ body {
       display: flex;
       flex-direction: column;
       opacity: 0;
-      transition: all 0.3s ease-in-out;
    }
 
    &__main-content-active {
@@ -2124,7 +2121,6 @@ body {
       display: flex;
       flex-direction: column;
       opacity: 0;
-      transition: opacity 0.3s ease-in-out;
       position: relative;
    }
 
@@ -2429,7 +2425,6 @@ body {
       line-height: 22px;
       text-align: right;
       letter-spacing: 8px;
-      transition: 0s;
       text-transform: uppercase;
       color: #FFFFFF;
       mix-blend-mode: normal;
@@ -2626,7 +2621,6 @@ body {
 
    &__main-content {
       opacity: 0;
-      transition: opacity 0.3s ease-in-out;
       position: relative;
       z-index: 4;
    }
