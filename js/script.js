@@ -71,25 +71,25 @@ function shoreSmallSlider() {
       window.addEventListener('resize', initSmall);
       initSmall();
 
-      smallSlider[slide].querySelector('.info-slides__arrow-left').addEventListener('click', function () {
+      smallSlider[slide].querySelector('.info-slides__arrow-right').addEventListener('click', function () {
          countSmall++;
          if (countSmall >= slidesImages.length) {
-            countSmall =  0;
+            countSmall =  slidesImages.length - 1;
          }
          rollSliderSmall();
          console.log(widthSmall);
       });
 
-      smallSlider[slide].querySelector('.info-slides__arrow-right').addEventListener('click', function () {
+      smallSlider[slide].querySelector('.info-slides__arrow-left').addEventListener('click', function () {
          countSmall--;
          if (countSmall < 0) {
-            countSmall =  slidesImages.length - 1;
+            countSmall =  0;
          }
          rollSliderSmall();
       });
 
       function rollSliderSmall() {
-         slidesLineSmall.style.transform = 'translate(-' + countSmall * widthSmall + 'px)';
+         slidesLineSmall.style.transform = 'translate(+' + countSmall * widthSmall + 'px)';
       }
    }
 
@@ -150,22 +150,13 @@ shoreData();
 /*------------------------Shore. Location---------------*/
 
 function shoreLocation() {
-   const locationIcon = document.querySelector('.location-shore__icon');
+   const locationIcon = document.querySelector('.shore-aside__location');
    const nameLocation = document.querySelector('.location-shore__place');
 
-   window.addEventListener('resize', shoreLocation);
+   locationIcon.addEventListener('click', function () {
+         nameLocation.classList.toggle('location-shore__place-active');
+      });
 
-   function showLocation() {
-      if (window.innerWidth < 541) {
-         locationIcon.addEventListener('click', function () {
-            nameLocation.classList.toggle('location-shore__place-active');
-         });
-      }
-   }
-   showLocation();
-   
-   
-   
 }
 
 shoreLocation();
@@ -450,7 +441,6 @@ function shopSlider() {
             shopSlides[index].classList.remove('shop__main-content-active');
          }
       }
-      shopTips();
    })
 
    shopBtnlLeft.addEventListener('click', function () {
@@ -465,37 +455,46 @@ function shopSlider() {
             shopSlides[index].classList.remove('shop__main-content-active');
          }
       }
-      shopTips();
    })
 
-   function shopTips() {
-      const shopActive = document.querySelector('.shop__main-content-active');
-      const shape = shopActive.querySelector('#shape');
+   function shopTips(shopSlide) {
+      const shape = shopSlide.querySelector('#shape');
       const btnShape = shape.querySelector('.board-surf__pointer');
       const descrptShape = shape.querySelector('.board-surf__decription');
 
       btnShape.addEventListener('click', function () {
          descrptShape.classList.toggle('shape-descrpt');
+         btnShape.classList.toggle('board-surf__pointer-active');
       })
 
-      const rail = shopActive.querySelector('#rail');
+      
+      const rail = shopSlide.querySelector('#rail');
       const btnRail = rail.querySelector('.board-surf__pointer');
       const descrptRail = rail.querySelector('.board-surf__decription');
       
       btnRail.addEventListener('click', function () {
          descrptRail.classList.toggle('rail-descrpt');
+         btnRail.classList.toggle('board-surf__pointer-active');
       })
 
-      const fins = shopActive.querySelector('#fins');
+
+      const fins = shopSlide.querySelector('#fins');
       const btnFins = fins.querySelector('.board-surf__pointer');
       const descrptFins = fins.querySelector('.board-surf__decription');
       
       btnFins.addEventListener('click', function () {
          descrptFins.classList.toggle('fins-descrpt');
+         btnFins.classList.toggle('board-surf__pointer-active');
       })
 
    }
-   shopTips();
+   const shopNugget = document.querySelector('#nugget');
+   const shopGypsy = document.querySelector('#gypsy');
+   const shopKona = document.querySelector('#kona');
+
+   shopTips(shopNugget);
+   shopTips(shopGypsy);
+   shopTips(shopKona);
 }  
 
 shopSlider();
